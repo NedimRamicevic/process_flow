@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:process_flow/screens/tasks/task.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,25 +11,16 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Flutter Demo',
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
+      home: Container(
+          color: Colors.amber,
+          child: Column(
+            children: const [
+              Task(taskName: "Nedim", taskDescription: "Naber"),
+              Task(taskName: "Nedim", taskDescription: "Naber"),
+            ],
+          )),
     );
   }
 }
