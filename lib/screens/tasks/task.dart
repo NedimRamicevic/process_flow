@@ -10,28 +10,24 @@ class Task extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 150,
-      height: 150,
-      child: Container(
-        decoration: const BoxDecoration(
-            color: Colors.blue,
-            borderRadius: BorderRadius.all(Radius.circular(20))),
-        child: Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: context.lowWidthValue,
-                vertical: context.mediumHeightValue),
-            child: Column(children: [
-              Text(
-                taskName,
-                style: context.title,
-              ),
-              Text(
-                taskDescription,
-                style: context.desc,
-              )
-            ])),
-      ),
+    return Container(
+      decoration: BoxDecoration(
+          color: Colors.grey.shade300,
+          borderRadius: const BorderRadius.all(Radius.circular(15))),
+      child: Padding(
+          padding: EdgeInsets.symmetric(
+              horizontal: context.lowHeighthValue,
+              vertical: context.mediumHeightValue),
+          child: Column(children: [
+            Text(
+              taskName,
+              style: context.title,
+            ),
+            Text(
+              taskDescription,
+              style: context.desc,
+            )
+          ])),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:process_flow/screens/tasks/task.dart';
+import 'package:process_flow/screens/tasks/taskList.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,15 +13,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      home: Container(
+        title: 'Flutter Demo',
+        home: Container(
           color: Colors.amber,
-          child: Column(
-            children: const [
-              Task(taskName: "Nedim", taskDescription: "Naber"),
-              Task(taskName: "Nedim", taskDescription: "Naber"),
-            ],
-          )),
-    );
+          child: const TaskList(),
+        ));
   }
 }
