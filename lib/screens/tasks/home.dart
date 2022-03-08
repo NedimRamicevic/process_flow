@@ -16,13 +16,13 @@ class Home extends StatelessWidget {
           builder: (context) {
             return Container(
               padding: const EdgeInsets.all(10),
-              child: const SettingsForm(),
+              child: const TaskAddForm(),
             );
           });
     }
 
     return ChangeNotifierProvider(
-      create: (context) => taskProvider(),
+      create: (context) => TaskProvider(),
       child: Scaffold(
         body: Container(
           color: Colors.amber,
@@ -44,7 +44,7 @@ class Home extends StatelessWidget {
               ],
             )),
         floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
+          child: const Icon(Icons.add),
           onPressed: _showSettingsPanel,
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

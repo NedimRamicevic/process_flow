@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:process_flow/models/task.dart';
 import 'package:process_flow/screens/tasks/task.dart';
 
-class taskProvider extends ChangeNotifier {
-  List taskList = [];
+class TaskProvider extends ChangeNotifier {
+  List<TaskModel> taskList = <TaskModel>[];
 
-  void addTask(Task task) {
+  void addTask(TaskModel task) {
     taskList.add(task);
     notifyListeners();
   }
