@@ -20,7 +20,7 @@ class _TaskListState extends State<TaskList> {
       padding: EdgeInsets.symmetric(horizontal: context.mediumHeightValue),
       margin: EdgeInsets.all(context.lowHeighthValue),
       child: Consumer<TaskProvider>(
-        builder: ((context, value, child) {
+        builder: ((ctx1, value, child) {
           return GridView.builder(
             itemCount: value.taskList.length,
             scrollDirection: Axis.vertical,

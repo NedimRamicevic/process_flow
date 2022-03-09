@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:process_flow/provider/task_provider.dart';
 import 'package:process_flow/screens/tasks/home.dart';
 
 void main() {

@@ -43,6 +43,7 @@ class _TaskAddFormState extends State<TaskAddForm> {
           ),
           ElevatedButton(
               onPressed: (() {
+                print("naber");
                 Provider.of<TaskProvider>(context, listen: false).addTask(
                     TaskModel(taskName: _taskName, taskDesc: _taskDesc));
               }),

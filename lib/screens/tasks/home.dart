@@ -10,17 +10,6 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    void _showSettingsPanel() {
-      showModalBottomSheet(
-          context: context,
-          builder: (context) {
-            return Container(
-              padding: const EdgeInsets.all(10),
-              child: const TaskAddForm(),
-            );
-          });
-    }
-
     return ChangeNotifierProvider(
       create: (context) => TaskProvider(),
       child: Scaffold(
@@ -45,7 +34,16 @@ class Home extends StatelessWidget {
             )),
         floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.add),
-          onPressed: _showSettingsPanel,
+          onPressed: () {
+            showModalBottomSheet(
+                context: context,
+                builder: (context) {
+                  return Container(
+                    padding: const EdgeInsets.all(10),
+                    child: const TaskAddForm(),
+                  );
+                });
+          },
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       ),
