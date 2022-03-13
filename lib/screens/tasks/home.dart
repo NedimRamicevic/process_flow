@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:process_flow/provider/task_provider.dart';
 import 'package:process_flow/screens/tasks/bottomNavBar.dart';
-import 'package:provider/provider.dart';
 
 import 'settingsForm.dart';
 import 'taskList.dart';

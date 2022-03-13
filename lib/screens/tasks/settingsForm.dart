@@ -17,6 +17,7 @@ class _TaskAddFormState extends State<TaskAddForm> {
 
   String _taskName = "";
   String _taskDesc = "";
+  bool _isChecked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -41,11 +42,24 @@ class _TaskAddFormState extends State<TaskAddForm> {
           const SizedBox(
             height: 10,
           ),
+          Checkbox(
+              value: _isChecked,
+              onChanged: (val) {
+                setState(() {
+                  _isChecked = !_isChecked;
+                });
+              }),
           ElevatedButton(
               onPressed: (() {
-                print("naber");
                 Provider.of<TaskProvider>(context, listen: false).addTask(
-                    TaskModel(taskName: _taskName, taskDesc: _taskDesc));
+                    TaskModel(
+                        taskName: _taskName,
+                        taskDesc: _taskDesc,
+                        isDone: _isChecked,
+                        id: Provider.of<TaskProvider>(context, listen: false)
+                                .taskList
+                                .length +
+                            1));
               }),
               child: const Text("Update")),
         ]));

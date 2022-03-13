@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:process_flow/extensions/context_extension.dart';
-import 'package:process_flow/models/task.dart';
 import 'package:process_flow/provider/task_provider.dart';
 import 'package:process_flow/screens/tasks/task.dart';
+import 'package:process_flow/screens/tasks/updateTask.dart';
 import 'package:provider/provider.dart';
 
 class TaskList extends StatefulWidget {
@@ -25,11 +26,45 @@ class _TaskListState extends State<TaskList> {
             itemCount: value.taskList.length,
             scrollDirection: Axis.vertical,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, crossAxisSpacing: 4.0, mainAxisSpacing: 4.0),
+                childAspectRatio: 4,
+                crossAxisCount: 1,
+                crossAxisSpacing: 2.0,
+                mainAxisSpacing: 2.0),
             itemBuilder: (BuildContext ctx, int index) {
-              return Task(
+              return Slidable(
+                key: ValueKey(value.taskList[index].id),
+                startActionPane: ActionPane(
+                  motion: ScrollMotion(),
+                  children: [
+                    SlidableAction(
+                      onPressed: ((context) {
+                        value.deleteTask(index);
+                      }),
+                      backgroundColor: Color(0xFFFE4A49),
+                      foregroundColor: Colors.white,
+                      icon: Icons.delete,
+                      label: 'Delete',
+                    ),
+                    SlidableAction(
+                      onPressed: (ctx) {
+                        showDialog(
+                            context: context,
+                            builder: (context) =>
+                                UpdateTask(id: value.taskList[index].id));
+                      },
+                      backgroundColor: const Color(0xFF21B7CA),
+                      foregroundColor: Colors.white,
+                      icon: Icons.edit,
+                      label: 'Edit',
+                    ),
+                  ],
+                ),
+                child: Task(
                   taskName: value.taskList[index].taskName,
-                  taskDescription: value.taskList[index].taskDesc);
+                  taskDescription: value.taskList[index].taskDesc,
+                  isDone: value.taskList[index].isDone,
+                ),
+              );
             },
           );
         }),
