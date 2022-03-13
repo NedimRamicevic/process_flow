@@ -1,6 +1,6 @@
 class TaskModel {
   final String taskDesc;
-  final String taskName;
+  late final String taskName;
   final bool isDone;
   final int id;
 

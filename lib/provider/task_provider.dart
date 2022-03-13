@@ -3,8 +3,8 @@ import 'package:process_flow/models/task.dart';
 
 class TaskProvider extends ChangeNotifier {
   List<TaskModel> taskList = <TaskModel>[
-    TaskModel(taskName: "Nedim", taskDesc: "Rastum", isDone: true, id: 1),
-    TaskModel(taskName: "Nedim", taskDesc: "Rastum", isDone: false, id: 2)
+    TaskModel(taskName: "Nedim", taskDesc: "Rastum", isDone: true, id: 0),
+    TaskModel(taskName: "Nedim", taskDesc: "Rastum", isDone: false, id: 1)
   ];
 
   void addTask(TaskModel task) {
@@ -19,7 +19,7 @@ class TaskProvider extends ChangeNotifier {
 
   void editTask(TaskModel task) {
     TaskModel editedTask = taskList.elementAt(task.id);
-    editedTask = task;
+    editedTask.taskName = task.taskName;
     notifyListeners();
   }
 }

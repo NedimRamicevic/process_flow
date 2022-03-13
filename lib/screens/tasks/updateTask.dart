@@ -26,7 +26,7 @@ class _UpdateTaskState extends State<UpdateTask> {
     return AlertDialog(
       content: Form(
           key: _formKey,
-          child: Column(children: [
+          child: Column(mainAxisSize: MainAxisSize.min, children: [
             const Text("Update Your Settings"),
             const SizedBox(
               height: 20,
