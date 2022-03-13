@@ -49,8 +49,8 @@ class _TaskListState extends State<TaskList> {
                       onPressed: (ctx) {
                         showDialog(
                             context: context,
-                            builder: (context) =>
-                                UpdateTask(id: value.taskList[index].id));
+                            builder: (context) => UpdateTask(
+                                id: value.taskList[index].id.toString()));
                       },
                       backgroundColor: const Color(0xFF21B7CA),
                       foregroundColor: Colors.white,
