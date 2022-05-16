@@ -1,10 +1,13 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:process_flow/screens/tasks/home.dart';
 import 'package:provider/provider.dart';
-
+import './theme/light_theme.dart';
 import 'provider/task_provider.dart';
 
-void main() {
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -16,6 +19,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
         create: (context) => TaskProvider(),
-        child: const MaterialApp(title: 'Flutter Demo', home: Home()));
+        child: MaterialApp(
+            theme: LighTheme().theme,
+            title: 'Flutter Demo',
+            home: const Home()));
   }
 }

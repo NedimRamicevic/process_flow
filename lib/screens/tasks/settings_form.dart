@@ -56,10 +56,11 @@ class _TaskAddFormState extends State<TaskAddForm> {
                         taskName: _taskName,
                         taskDesc: _taskDesc,
                         isDone: _isChecked,
-                        id: Provider.of<TaskProvider>(context, listen: false)
-                                .taskList
-                                .length +
-                            1));
+                        id: (Provider.of<TaskProvider>(context, listen: false)
+                                    .taskList
+                                    .length +
+                                1)
+                            .toString()));
               }),
               child: const Text("Update")),
         ]));

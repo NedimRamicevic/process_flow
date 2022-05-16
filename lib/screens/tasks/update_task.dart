@@ -8,7 +8,7 @@ import '../../shared/constants.dart';
 class UpdateTask extends StatefulWidget {
   const UpdateTask({Key? key, required this.id}) : super(key: key);
 
-  final int id;
+  final String id;
 
   @override
   State<UpdateTask> createState() => _UpdateTaskState();

@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "704919833076",
-    "project_id": "portofino-eeccb",
-    "storage_bucket": "portofino-eeccb.appspot.com"
+    "project_number": "1019562577647",
+    "project_id": "processflow-3b3d3",
+    "storage_bucket": "processflow-3b3d3.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:704919833076:android:557b2a75e921036a3791a1",
+        "mobilesdk_app_id": "1:1019562577647:android:f4130d3ee05eb24a7b951a",
         "android_client_info": {
-          "package_name": "com.rastum.portofino"
+          "package_name": "com.example.process_flow"
         }
       },
       "oauth_client": [
         {
-          "client_id": "704919833076-675go7cashefp74blmf2c7gmsqfjkdp5.apps.googleusercontent.com",
+          "client_id": "1019562577647-sfbf2r7d5qm0b9saa4qmf7mr3upv8307.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDhtLPhwtCCB6cZwjQMcAXam0epxPtN63c"
+          "current_key": "AIzaSyCEVo3cDo-wiYGv5P0n3XeoI9jGlxQVO3Y"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "704919833076-675go7cashefp74blmf2c7gmsqfjkdp5.apps.googleusercontent.com",
+              "client_id": "1019562577647-sfbf2r7d5qm0b9saa4qmf7mr3upv8307.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

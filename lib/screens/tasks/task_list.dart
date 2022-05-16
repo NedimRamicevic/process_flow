@@ -3,7 +3,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:process_flow/extensions/context_extension.dart';
 import 'package:process_flow/provider/task_provider.dart';
 import 'package:process_flow/screens/tasks/task.dart';
-import 'package:process_flow/screens/tasks/updateTask.dart';
+import 'package:process_flow/screens/tasks/update_task.dart';
 import 'package:provider/provider.dart';
 
 class TaskList extends StatefulWidget {
@@ -34,13 +34,13 @@ class _TaskListState extends State<TaskList> {
               return Slidable(
                 key: ValueKey(value.taskList[index].id),
                 startActionPane: ActionPane(
-                  motion: ScrollMotion(),
+                  motion: const ScrollMotion(),
                   children: [
                     SlidableAction(
                       onPressed: ((context) {
-                        value.deleteTask(index);
+                        value.deleteTask(index.toString());
                       }),
-                      backgroundColor: Color(0xFFFE4A49),
+                      backgroundColor: Theme.of(context).colorScheme.onError,
                       foregroundColor: Colors.white,
                       icon: Icons.delete,
                       label: 'Delete',
@@ -52,7 +52,7 @@ class _TaskListState extends State<TaskList> {
                             builder: (context) => UpdateTask(
                                 id: value.taskList[index].id.toString()));
                       },
-                      backgroundColor: const Color(0xFF21B7CA),
+                      backgroundColor: Theme.of(context).colorScheme.primary,
                       foregroundColor: Colors.white,
                       icon: Icons.edit,
                       label: 'Edit',
