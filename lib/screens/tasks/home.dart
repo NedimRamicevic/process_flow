@@ -7,11 +7,12 @@ import 'taskList.dart';
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
 
+  final title = "App Bar";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("App Bar"),
+        title: Text(title),
       ),
       body: Container(
         color: Colors.amber,
