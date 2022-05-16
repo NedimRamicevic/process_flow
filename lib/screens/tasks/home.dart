@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:process_flow/screens/tasks/bottomNavBar.dart';
+import 'package:process_flow/screens/tasks/bottom_navbar.dart';
 
-import 'settingsForm.dart';
-import 'taskList.dart';
+import 'settings_form.dart';
+import 'task_list.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
