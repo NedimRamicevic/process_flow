@@ -25,23 +25,17 @@ class _TaskAddFormState extends State<TaskAddForm> {
         key: _formKey,
         child: Column(children: [
           const Text("Update Your Settings"),
-          const SizedBox(
-            height: 20,
-          ),
+          const CustomSizedBox(size: 20),
           TextFormField(
             decoration: textInputDecoration,
             onChanged: (val) => setState(() => _taskDesc = val),
           ),
-          const SizedBox(
-            height: 20,
-          ),
+          const CustomSizedBox(size: 20),
           TextFormField(
             decoration: textInputDecoration,
             onChanged: (val) => setState(() => _taskName = val),
           ),
-          const SizedBox(
-            height: 10,
-          ),
+          const CustomSizedBox(size: 20),
           Checkbox(
               value: _isChecked,
               onChanged: (val) {
@@ -51,7 +45,7 @@ class _TaskAddFormState extends State<TaskAddForm> {
               }),
           ElevatedButton(
               onPressed: (() {
-                Provider.of<TaskProvider>(context, listen: false).addTask(
+                Provider.of<TaskProvider>(context, listen: true).addTask(
                     TaskModel(
                         taskName: _taskName,
                         taskDesc: _taskDesc,
@@ -64,5 +58,20 @@ class _TaskAddFormState extends State<TaskAddForm> {
               }),
               child: const Text("Update")),
         ]));
+  }
+}
+
+class CustomSizedBox extends StatelessWidget {
+  const CustomSizedBox({
+    Key? key,
+    required this.size,
+  }) : super(key: key);
+  final double size;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: size,
+    );
   }
 }

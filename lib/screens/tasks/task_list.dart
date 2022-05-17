@@ -41,7 +41,8 @@ class _TaskListState extends State<TaskList> {
                         value.deleteTask(index.toString());
                       }),
                       backgroundColor: Theme.of(context).colorScheme.onError,
-                      foregroundColor: Colors.white,
+                      foregroundColor:
+                          Theme.of(context).colorScheme.onSecondary,
                       icon: Icons.delete,
                       label: 'Delete',
                     ),

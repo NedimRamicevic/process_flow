@@ -9,9 +9,9 @@ class Task extends StatelessWidget {
       required this.taskDescription})
       : super(key: key);
 
-  final taskName;
-  final taskDescription;
-  final isDone;
+  final String taskName;
+  final String taskDescription;
+  final bool isDone;
 
   @override
   Widget build(BuildContext context) {

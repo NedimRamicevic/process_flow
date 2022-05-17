@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:process_flow/api/firebase_api.dart';
 import 'package:process_flow/models/task.dart';
 
 class TaskProvider extends ChangeNotifier {
@@ -8,7 +7,11 @@ class TaskProvider extends ChangeNotifier {
     TaskModel(taskName: "Nedim", taskDesc: "Rastum", isDone: false, id: "1")
   ];
 
-  void addTask(TaskModel task) => FirebaseApi.createTask(task);
+  // void addTask(TaskModel task) => FirebaseApi.createTask(task);
+
+  void addTask(TaskModel task) {
+    taskList.add(task);
+  }
 
   void deleteTask(String taskId) {
     taskList.removeWhere((element) => element.id == taskId);
