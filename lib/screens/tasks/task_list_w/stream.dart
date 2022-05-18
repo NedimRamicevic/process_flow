@@ -21,53 +21,54 @@ class _TaskListWithStreamState extends State<TaskListWithStream> {
       color: Colors.white,
       padding: EdgeInsets.symmetric(horizontal: context.mediumHeightValue),
       margin: EdgeInsets.all(context.lowHeighthValue),
-      child: 
-      (Provider.of<List<TaskModel>>(context).isEmpty ) ?
-      GridView.builder(
-        itemCount: Provider.of<List<TaskModel>>(context).length,
-        scrollDirection: Axis.vertical,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            childAspectRatio: 4,
-            crossAxisCount: 1,
-            crossAxisSpacing: 2.0,
-            mainAxisSpacing: 2.0),
-        itemBuilder: (BuildContext ctx, int index) {
-          return Slidable(
-            key: ValueKey(taskList[index].id),
-            startActionPane: ActionPane(
-              motion: const ScrollMotion(),
-              children: [
-                SlidableAction(
-                  onPressed: ((context) {
-                    null;
-                  }),
-                  backgroundColor: Theme.of(context).colorScheme.onError,
-                  foregroundColor: Theme.of(context).colorScheme.onSecondary,
-                  icon: Icons.delete,
-                  label: 'Delete',
-                ),
-                SlidableAction(
-                  onPressed: (ctx) {
-                    showDialog(
-                        context: context,
-                        builder: (context) =>
-                            UpdateTask(id: taskList[index].id.toString()));
-                  },
-                  backgroundColor: Theme.of(context).colorScheme.primary,
-                  foregroundColor: Colors.white,
-                  icon: Icons.edit,
-                  label: 'Edit',
-                ),
-              ],
+      child: (Provider.of<List<TaskModel>?>(context) == null)
+          ? const Center(child: CircularProgressIndicator())
+          : GridView.builder(
+              itemCount: taskList.length,
+              scrollDirection: Axis.vertical,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  childAspectRatio: 4,
+                  crossAxisCount: 1,
+                  crossAxisSpacing: 2.0,
+                  mainAxisSpacing: 2.0),
+              itemBuilder: (BuildContext ctx, int index) {
+                return Slidable(
+                  key: ValueKey(taskList[index].id),
+                  startActionPane: ActionPane(
+                    motion: const ScrollMotion(),
+                    children: [
+                      SlidableAction(
+                        onPressed: ((context) {
+                          null;
+                        }),
+                        backgroundColor: Theme.of(context).colorScheme.onError,
+                        foregroundColor:
+                            Theme.of(context).colorScheme.onSecondary,
+                        icon: Icons.delete,
+                        label: 'Delete',
+                      ),
+                      SlidableAction(
+                        onPressed: (ctx) {
+                          showDialog(
+                              context: context,
+                              builder: (context) => UpdateTask(
+                                  id: taskList[index].id.toString()));
+                        },
+                        backgroundColor: Theme.of(context).colorScheme.primary,
+                        foregroundColor: Colors.white,
+                        icon: Icons.edit,
+                        label: 'Edit',
+                      ),
+                    ],
+                  ),
+                  child: Task(
+                    taskName: taskList[index].taskName,
+                    taskDescription: taskList[index].taskDesc,
+                    isDone: taskList[index].isDone,
+                  ),
+                );
+              },
             ),
-            child: Task(
-              taskName: taskList[index].taskName,
-              taskDescription: taskList[index].taskDesc,
-              isDone: taskList[index].isDone,
-            ),
-          );
-        },
-      ),
     );
   }
 }
