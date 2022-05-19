@@ -38,6 +38,15 @@ class FirestoreDatabaseService {
     }, SetOptions(merge: true));
   }
 
+  Future addTask(TaskModel taskModel) async {
+    return await taskCollection.doc(taskModel.id).set({
+      'id': taskModel.id,
+      'description': taskModel.taskDesc,
+      'title': taskModel.taskName,
+      'isDone': taskModel.isDone
+    }, SetOptions(merge: true));
+  }
+
   void deleteTask(id) {
     taskCollection.doc(id).delete();
   }

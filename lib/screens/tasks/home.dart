@@ -28,10 +28,7 @@ class Home extends StatelessWidget {
           showModalBottomSheet(
               context: context,
               builder: (context) {
-                return Container(
-                  padding: const EdgeInsets.all(10),
-                  child: const TaskAddForm(),
-                );
+                return const TaskAddForm();
               });
         },
       ),

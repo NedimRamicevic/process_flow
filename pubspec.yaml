@@ -31,6 +31,7 @@ dependencies:
     sdk: flutter
   provider: ^6.0.0
   flutter_slidable: ^1.2.0
+  flutter_guid: ^0.2.0
 
   #firebase
   firebase_core: ^1.13.1

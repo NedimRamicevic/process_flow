@@ -8,7 +8,9 @@ import './theme/light_theme.dart';
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  runApp(Provider(
+      create: (context) => FirestoreDatabaseService(uid: "11"),
+      child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -18,10 +20,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: LighTheme().theme,
-        title: 'Flutter Demo',
-        home: Provider(
-            create: (context) => FirestoreDatabaseService(uid: "11"),
-            child: const Home()));
+        theme: LighTheme().theme, title: 'Flutter Demo', home: const Home());
   }
 }
