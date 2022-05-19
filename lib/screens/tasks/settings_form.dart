@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:process_flow/models/task.dart';
-import 'package:process_flow/provider/task_provider.dart';
+import 'package:process_flow/provider/firestore_database_service.dart';
 import 'package:provider/provider.dart';
-
+// ignore: import_of_legacy_library_into_null_safe
+import 'package:flutter_guid/flutter_guid.dart';
 import '../../shared/constants.dart';
 
 class TaskAddForm extends StatefulWidget {
@@ -21,43 +22,44 @@ class _TaskAddFormState extends State<TaskAddForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-        key: _formKey,
-        child: Column(children: [
-          const Text("Update Your Settings"),
-          const CustomSizedBox(size: 20),
-          TextFormField(
-            decoration: textInputDecoration,
-            onChanged: (val) => setState(() => _taskDesc = val),
-          ),
-          const CustomSizedBox(size: 20),
-          TextFormField(
-            decoration: textInputDecoration,
-            onChanged: (val) => setState(() => _taskName = val),
-          ),
-          const CustomSizedBox(size: 20),
-          Checkbox(
-              value: _isChecked,
-              onChanged: (val) {
-                setState(() {
-                  _isChecked = !_isChecked;
-                });
-              }),
-          ElevatedButton(
-              onPressed: (() {
-                Provider.of<TaskProvider>(context, listen: true).addTask(
-                    TaskModel(
-                        taskName: _taskName,
-                        taskDesc: _taskDesc,
-                        isDone: _isChecked,
-                        id: (Provider.of<TaskProvider>(context, listen: false)
-                                    .taskList
-                                    .length +
-                                1)
-                            .toString()));
-              }),
-              child: const Text("Update")),
-        ]));
+    return SizedBox(
+      child: Card(
+        child: Form(
+            key: _formKey,
+            child: Column(children: [
+              const Text("Update Your Settings"),
+              const CustomSizedBox(size: 20),
+              TextFormField(
+                decoration: textInputDecoration,
+                onChanged: (val) => setState(() => _taskDesc = val),
+              ),
+              const CustomSizedBox(size: 20),
+              TextFormField(
+                decoration: textInputDecoration,
+                onChanged: (val) => setState(() => _taskName = val),
+              ),
+              const CustomSizedBox(size: 20),
+              Checkbox(
+                  value: _isChecked,
+                  onChanged: (val) {
+                    setState(() {
+                      _isChecked = !_isChecked;
+                    });
+                  }),
+              ElevatedButton(
+                  onPressed: (() {
+                    Provider.of<FirestoreDatabaseService>(context,
+                            listen: false)
+                        .addTask(TaskModel(
+                            taskName: _taskName,
+                            taskDesc: _taskDesc,
+                            isDone: _isChecked,
+                            id: Guid.newGuid.toString()));
+                  }),
+                  child: const Text("Update")),
+            ])),
+      ),
+    );
   }
 }
 
