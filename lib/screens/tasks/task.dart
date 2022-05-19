@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:process_flow/extensions/context_extension.dart';
 
 class Task extends StatelessWidget {
   const Task(
@@ -15,19 +14,22 @@ class Task extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.blueGrey,
+    return Card(
+      color: Theme.of(context).primaryColor,
       child: ListTile(
         leading: const Icon(Icons.access_alarm),
         title: Text(
           taskName,
-          style: context.title,
+          style: Theme.of(context).textTheme.subtitle1,
         ),
         subtitle: Text(
           taskDescription,
-          style: context.desc,
+          style: Theme.of(context).textTheme.subtitle2,
         ),
-        trailing: Text(isDone.toString()),
+        trailing: Text(
+          isDone.toString(),
+          style: Theme.of(context).textTheme.subtitle2,
+        ),
       ),
     );
   }

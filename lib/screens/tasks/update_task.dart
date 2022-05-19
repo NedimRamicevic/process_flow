@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:process_flow/provider/firestore_database_service.dart';
 import 'package:provider/provider.dart';
 
 import '../../models/task.dart';
-import '../../provider/task_provider.dart';
 import '../../shared/constants.dart';
 
 class UpdateTask extends StatefulWidget {
@@ -54,8 +54,8 @@ class _UpdateTaskState extends State<UpdateTask> {
                 }),
             ElevatedButton(
                 onPressed: (() {
-                  Provider.of<TaskProvider>(context, listen: false).editTask(
-                      TaskModel(
+                  Provider.of<FirestoreDatabaseService>(context, listen: false)
+                      .updateTask(TaskModel(
                           taskName: _taskName,
                           taskDesc: _taskDesc,
                           isDone: _isChecked,

@@ -17,7 +17,7 @@ class _TaskListState extends State<TaskList> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: Theme.of(context).colorScheme.primary,
       padding: EdgeInsets.symmetric(horizontal: context.mediumHeightValue),
       margin: EdgeInsets.all(context.lowHeighthValue),
       child: Consumer<TaskProvider>(

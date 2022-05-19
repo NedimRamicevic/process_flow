@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:process_flow/extensions/context_extension.dart';
 import 'package:process_flow/models/task.dart';
+import 'package:process_flow/provider/firestore_database_service.dart';
 import 'package:process_flow/screens/tasks/task.dart';
 import 'package:process_flow/screens/tasks/update_task.dart';
 import 'package:provider/provider.dart';
@@ -18,9 +19,9 @@ class _TaskListWithStreamState extends State<TaskListWithStream> {
   Widget build(BuildContext context) {
     List<TaskModel> taskList = Provider.of<List<TaskModel>>(context);
     return Container(
-      color: Colors.white,
+      color: Theme.of(context).backgroundColor,
       padding: EdgeInsets.symmetric(horizontal: context.mediumHeightValue),
-      margin: EdgeInsets.all(context.lowHeighthValue),
+      // margin: EdgeInsets.all(context.lowHeighthValue),
       child: (Provider.of<List<TaskModel>?>(context) == null)
           ? const Center(child: CircularProgressIndicator())
           : GridView.builder(
@@ -39,7 +40,9 @@ class _TaskListWithStreamState extends State<TaskListWithStream> {
                     children: [
                       SlidableAction(
                         onPressed: ((context) {
-                          null;
+                          Provider.of<FirestoreDatabaseService>(context,
+                                  listen: false)
+                              .deleteTask(taskList[index].id);
                         }),
                         backgroundColor: Theme.of(context).colorScheme.onError,
                         foregroundColor:

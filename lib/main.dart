@@ -1,9 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:process_flow/provider/firestore_database_service.dart';
 import 'package:process_flow/screens/tasks/home.dart';
 import 'package:provider/provider.dart';
 import './theme/light_theme.dart';
-import 'provider/task_provider.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,11 +17,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-        create: (context) => TaskProvider(),
-        child: MaterialApp(
-            theme: LighTheme().theme,
-            title: 'Flutter Demo',
-            home: const Home()));
+    return MaterialApp(
+        theme: LighTheme().theme,
+        title: 'Flutter Demo',
+        home: Provider(
+            create: (context) => FirestoreDatabaseService(uid: "11"),
+            child: const Home()));
   }
 }
