@@ -54,16 +54,12 @@ class _TaskListWithStreamState extends State<TaskListWithStream> {
                         onPressed: (ctx) {
                           showDialog(
                             context: context,
-                            builder: (context) => Provider(
-                                create: ((context) =>
-                                    Provider.of<FirestoreDatabaseService>(
-                                        context,
-                                        listen: false)),
-                                child: UpdateTask(
-                                    id: taskList[index].id.toString())),
+                            builder: (context) =>
+                                UpdateTask(id: taskList[index].id.toString()),
                           );
                         },
-                        backgroundColor: Theme.of(context).colorScheme.primary,
+                        backgroundColor:
+                            Theme.of(context).colorScheme.secondary,
                         foregroundColor: Colors.white,
                         icon: Icons.edit,
                         label: 'Edit',

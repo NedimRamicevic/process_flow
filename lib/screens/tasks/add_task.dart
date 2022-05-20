@@ -16,18 +16,20 @@ class TaskAddForm extends StatefulWidget {
 class _TaskAddFormState extends State<TaskAddForm> {
   final _formKey = GlobalKey<FormState>();
 
+  final String _title = "Add Task";
   String _taskName = "";
   String _taskDesc = "";
   bool _isChecked = false;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: Card(
+    return AlertDialog(
+      content: Card(
+        elevation: 0,
         child: Form(
             key: _formKey,
-            child: Column(children: [
-              const Text("Update Your Settings"),
+            child: Column(mainAxisSize: MainAxisSize.min, children: [
+              Text(_title),
               const CustomSizedBox(size: 20),
               TextFormField(
                 decoration: textInputDecoration,
@@ -55,6 +57,7 @@ class _TaskAddFormState extends State<TaskAddForm> {
                             taskDesc: _taskDesc,
                             isDone: _isChecked,
                             id: Guid.newGuid.toString()));
+                    Navigator.of(context).pop();
                   }),
                   child: const Text("Update")),
             ])),

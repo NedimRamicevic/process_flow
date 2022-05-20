@@ -3,7 +3,7 @@ import 'package:process_flow/provider/firestore_database_service.dart';
 import 'package:process_flow/screens/tasks/bottom_navbar.dart';
 import 'package:provider/provider.dart';
 
-import 'settings_form.dart';
+import 'add_task.dart';
 import 'task_list_w/stream.dart';
 
 class Home extends StatelessWidget {
@@ -25,7 +25,7 @@ class Home extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () {
-          showModalBottomSheet(
+          showDialog(
               context: context,
               builder: (context) {
                 return const TaskAddForm();

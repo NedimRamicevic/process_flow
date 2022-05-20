@@ -17,6 +17,7 @@ class UpdateTask extends StatefulWidget {
 class _UpdateTaskState extends State<UpdateTask> {
   final _formKey = GlobalKey<FormState>();
 
+  final String _title = "Edit Task";
   String _taskName = "";
   String _taskDesc = "";
   bool _isChecked = false;
@@ -27,23 +28,23 @@ class _UpdateTaskState extends State<UpdateTask> {
       content: Form(
           key: _formKey,
           child: Column(mainAxisSize: MainAxisSize.min, children: [
-            const Text("Update Your Settings"),
-            const SizedBox(
-              height: 20,
+            Text(_title),
+            const CustomSizedBox(
+              size: 20,
             ),
             TextFormField(
               decoration: textInputDecoration,
               onChanged: (val) => setState(() => _taskDesc = val),
             ),
-            const SizedBox(
-              height: 20,
+            const CustomSizedBox(
+              size: 20,
             ),
             TextFormField(
               decoration: textInputDecoration,
               onChanged: (val) => setState(() => _taskName = val),
             ),
-            const SizedBox(
-              height: 10,
+            const CustomSizedBox(
+              size: 20,
             ),
             Checkbox(
                 value: _isChecked,
@@ -60,9 +61,25 @@ class _UpdateTaskState extends State<UpdateTask> {
                           taskDesc: _taskDesc,
                           isDone: _isChecked,
                           id: widget.id));
+                  Navigator.of(context).pop();
                 }),
                 child: const Text("Update")),
           ])),
+    );
+  }
+}
+
+class CustomSizedBox extends StatelessWidget {
+  const CustomSizedBox({
+    Key? key,
+    required this.size,
+  }) : super(key: key);
+  final double size;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: size,
     );
   }
 }
