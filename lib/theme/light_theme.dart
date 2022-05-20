@@ -7,7 +7,7 @@ class LighTheme {
 
   LighTheme() {
     theme = ThemeData(
-        backgroundColor: _lightColor.blueMenia,
+        backgroundColor: Colors.white70,
         appBarTheme: const AppBarTheme(
             shape: RoundedRectangleBorder(
                 borderRadius:
@@ -17,14 +17,13 @@ class LighTheme {
             const FloatingActionButtonThemeData(backgroundColor: Colors.green),
         buttonTheme: ButtonThemeData(
             colorScheme: ColorScheme.light(
-                onPrimary: Colors.purple,
+                onPrimary: Colors.white70,
                 onSecondary: _lightColor.blueMenia,
                 onError: _lightColor.redHot)),
         colorScheme: const ColorScheme.light().copyWith(
+            onPrimary: Colors.white70,
             background: _lightColor.blueMenia,
-            surface: _lightColor.blueMenia,
-            onPrimary: _lightColor.blueMenia,
-            onPrimaryContainer: _lightColor.blueMenia),
+            onError: _lightColor.redHot),
         checkboxTheme: CheckboxThemeData(
             fillColor: MaterialStateProperty.all(Colors.green),
             side: const BorderSide(color: Colors.green)),
