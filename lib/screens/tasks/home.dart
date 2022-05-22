@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:process_flow/models/task.dart';
 import 'package:process_flow/provider/firestore_database_service.dart';
-import 'package:process_flow/screens/tasks/bottom_navbar.dart';
+import 'package:process_flow/screens/tasks/task_list_w/bottom_navbar.dart';
 import 'package:provider/provider.dart';
 
 import '../../provider/bottom_navbar_provider.dart';
-import 'add_task.dart';
-import 'task_list_w/stream.dart';
+import 'task_list_w/add_task.dart';
+import 'task_list_w/task_list_w_stream.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -19,20 +20,7 @@ class Home extends StatelessWidget {
         appBar: AppBar(
           title: Text(title),
         ),
-        body: (value.sort == "all")
-            ? StreamProvider.value(
-                value: FirestoreDatabaseService(uid: "11").tasks,
-                initialData: null,
-                child: const TaskListWithStream())
-            : (value.sort == "isDone")
-                ? StreamProvider.value(
-                    value: FirestoreDatabaseService(uid: "11").tasksDone,
-                    initialData: null,
-                    child: const TaskListWithStream())
-                : StreamProvider.value(
-                    value: FirestoreDatabaseService(uid: "11").tasksUndone,
-                    initialData: null,
-                    child: const TaskListWithStream()),
+        body: sortTask(Provider.of<BottomNavBarNotfier>(context)),
         bottomNavigationBar: const BottomNavBar(),
         floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.add),
@@ -44,8 +32,25 @@ class Home extends StatelessWidget {
                 });
           },
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
       ),
     );
+  }
+
+  StreamProvider<List<TaskModel>?> sortTask(BottomNavBarNotfier value) {
+    return (value.sort == "all")
+        ? StreamProvider.value(
+            value: FirestoreDatabaseService(uid: "11").tasks,
+            initialData: null,
+            child: const TaskListWithStream())
+        : (value.sort == "isDone")
+            ? StreamProvider.value(
+                value: FirestoreDatabaseService(uid: "11").tasksDone,
+                initialData: null,
+                child: const TaskListWithStream())
+            : StreamProvider.value(
+                value: FirestoreDatabaseService(uid: "11").tasksUndone,
+                initialData: null,
+                child: const TaskListWithStream());
   }
 }
