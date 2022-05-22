@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:process_flow/provider/bottom_navbar_provider.dart';
+import 'package:provider/provider.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({Key? key}) : super(key: key);
@@ -19,6 +21,16 @@ class _BottomNavBarState extends State<BottomNavBar> {
       onTap: (index) {
         setState(() {
           selectedIndex = index;
+          switch (index) {
+            case 0:
+              Provider.of<BottomNavBarNotfier>(context).sort = "isDone";
+              break;
+            case 1:
+              Provider.of<BottomNavBarNotfier>(context).sort = "unDone";
+              break;
+            case 2:
+              Provider.of<BottomNavBarNotfier>(context).sort = "all";
+          }
         });
       },
       items: const [

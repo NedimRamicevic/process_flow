@@ -17,10 +17,7 @@ class FirestoreDatabaseService {
   }
 
   Stream<List<TaskModel>?> get tasks {
-    return taskCollection
-        .where('isDone', isEqualTo: true)
-        .snapshots()
-        .map(_taskListFromSnapshot);
+    return taskCollection.snapshots().map(_taskListFromSnapshot);
   }
 
   Stream<TaskModel> get task {
