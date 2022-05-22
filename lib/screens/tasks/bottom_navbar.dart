@@ -12,7 +12,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       unselectedItemColor: Colors.white.withOpacity(0.7),
       selectedItemColor: Colors.white,
       currentIndex: selectedIndex,

@@ -9,12 +9,29 @@ class FirestoreDatabaseService {
 
   FirestoreDatabaseService({required this.uid});
 
+  Stream<List<TaskModel>?> get tasksDone {
+    return taskCollection
+        .where('isDone', isEqualTo: true)
+        .snapshots()
+        .map(_taskListFromSnapshot);
+  }
+
   Stream<List<TaskModel>?> get tasks {
-    return taskCollection.snapshots().map(_taskListFromSnapshot);
+    return taskCollection
+        .where('isDone', isEqualTo: true)
+        .snapshots()
+        .map(_taskListFromSnapshot);
   }
 
   Stream<TaskModel> get task {
     return taskCollection.doc(uid).snapshots().map(_taskModelFromSnapshot);
+  }
+
+  Stream<List<TaskModel>?> get tasksUndone {
+    return taskCollection
+        .where('isDone', isEqualTo: false)
+        .snapshots()
+        .map(_taskListFromSnapshot);
   }
 
   Future createTask(String id,
@@ -67,5 +84,19 @@ class FirestoreDatabaseService {
           taskName: e['title'],
           taskDesc: e['description']);
     }).toList();
+  }
+
+  List<TaskModel>? _taskListFromSnapshotDone(
+      QuerySnapshot snapshot, bool done) {
+    return snapshot.docs
+        .map((e) {
+          return TaskModel(
+              id: e['id'],
+              isDone: e['isDone'],
+              taskName: e['title'],
+              taskDesc: e['description']);
+        })
+        .where((element) => element.isDone = done)
+        .toList();
   }
 }

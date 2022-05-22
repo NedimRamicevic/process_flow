@@ -15,7 +15,6 @@ class Task extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: Theme.of(context).primaryColor,
       child: ListTile(
         leading: const Icon(Icons.access_alarm),
         title: Text(

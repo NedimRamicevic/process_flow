@@ -24,44 +24,40 @@ class _TaskAddFormState extends State<TaskAddForm> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      content: Card(
-        elevation: 0,
-        child: Form(
-            key: _formKey,
-            child: Column(mainAxisSize: MainAxisSize.min, children: [
-              Text(_title),
-              const CustomSizedBox(size: 20),
-              TextFormField(
-                decoration: textInputDecoration,
-                onChanged: (val) => setState(() => _taskDesc = val),
-              ),
-              const CustomSizedBox(size: 20),
-              TextFormField(
-                decoration: textInputDecoration,
-                onChanged: (val) => setState(() => _taskName = val),
-              ),
-              const CustomSizedBox(size: 20),
-              Checkbox(
-                  value: _isChecked,
-                  onChanged: (val) {
-                    setState(() {
-                      _isChecked = !_isChecked;
-                    });
-                  }),
-              ElevatedButton(
-                  onPressed: (() {
-                    Provider.of<FirestoreDatabaseService>(context,
-                            listen: false)
-                        .addTask(TaskModel(
-                            taskName: _taskName,
-                            taskDesc: _taskDesc,
-                            isDone: _isChecked,
-                            id: Guid.newGuid.toString()));
-                    Navigator.of(context).pop();
-                  }),
-                  child: const Text("Update")),
-            ])),
-      ),
+      content: Form(
+          key: _formKey,
+          child: Column(mainAxisSize: MainAxisSize.min, children: [
+            Text(_title),
+            const CustomSizedBox(size: 20),
+            TextFormField(
+              decoration: textInputDecoration,
+              onChanged: (val) => setState(() => _taskDesc = val),
+            ),
+            const CustomSizedBox(size: 20),
+            TextFormField(
+              decoration: textInputDecoration,
+              onChanged: (val) => setState(() => _taskName = val),
+            ),
+            const CustomSizedBox(size: 20),
+            Checkbox(
+                value: _isChecked,
+                onChanged: (val) {
+                  setState(() {
+                    _isChecked = !_isChecked;
+                  });
+                }),
+            ElevatedButton(
+                onPressed: (() {
+                  Provider.of<FirestoreDatabaseService>(context, listen: false)
+                      .addTask(TaskModel(
+                          taskName: _taskName,
+                          taskDesc: _taskDesc,
+                          isDone: _isChecked,
+                          id: Guid.newGuid.toString()));
+                  Navigator.of(context).pop();
+                }),
+                child: const Text("Update")),
+          ])),
     );
   }
 }
