@@ -21,23 +21,30 @@ class _BottomNavBarState extends State<BottomNavBar> {
       onTap: (index) {
         setState(() {
           selectedIndex = index;
-          switch (index) {
-            case 0:
-              Provider.of<BottomNavBarNotfier>(context).sort = "isDone";
-              break;
-            case 1:
-              Provider.of<BottomNavBarNotfier>(context).sort = "unDone";
-              break;
-            case 2:
-              Provider.of<BottomNavBarNotfier>(context).sort = "all";
-          }
         });
+        selectTaskList(index, context);
       },
       items: const [
         BottomNavigationBarItem(
             icon: Icon(Icons.fact_check_outlined), label: "Todos"),
         BottomNavigationBarItem(icon: Icon(Icons.done), label: "Completed"),
+        BottomNavigationBarItem(icon: Icon(Icons.list), label: "All"),
       ],
     );
+  }
+
+  void selectTaskList(int index, BuildContext context) {
+    switch (index) {
+      case 0:
+        Provider.of<BottomNavBarNotfier>(context, listen: false).sort =
+            "unDone";
+        break;
+      case 1:
+        Provider.of<BottomNavBarNotfier>(context, listen: false).sort =
+            "isDone";
+        break;
+      case 2:
+        Provider.of<BottomNavBarNotfier>(context, listen: false).sort = "all";
+    }
   }
 }
