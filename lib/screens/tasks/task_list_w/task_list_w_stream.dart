@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:process_flow/extensions/context_extension.dart';
 import 'package:process_flow/models/task.dart';
 import 'package:process_flow/provider/firestore_database_service.dart';
 import 'package:process_flow/screens/tasks/task_list_w/task.dart';
 import 'package:process_flow/screens/tasks/task_list_w/update_task.dart';
+import 'package:process_flow/shared/extensions/context_extension.dart';
 import 'package:provider/provider.dart';
 
 class TaskListWithStream extends StatefulWidget {
@@ -55,7 +55,7 @@ class _TaskListWithStreamState extends State<TaskListWithStream> {
                           showDialog(
                             context: context,
                             builder: (context) =>
-                                UpdateTask(id: taskList[index].id.toString()),
+                                UpdateTask(updatedTask: taskList[index]),
                           );
                         },
                         backgroundColor:

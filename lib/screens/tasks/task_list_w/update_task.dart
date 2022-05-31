@@ -6,9 +6,9 @@ import '../../../models/task.dart';
 import '../../../shared/constants.dart';
 
 class UpdateTask extends StatefulWidget {
-  const UpdateTask({Key? key, required this.id}) : super(key: key);
+  const UpdateTask({Key? key, required this.updatedTask}) : super(key: key);
 
-  final String id;
+  final TaskModel updatedTask;
 
   @override
   State<UpdateTask> createState() => _UpdateTaskState();
@@ -16,11 +16,19 @@ class UpdateTask extends StatefulWidget {
 
 class _UpdateTaskState extends State<UpdateTask> {
   final _formKey = GlobalKey<FormState>();
-
   final String _title = "Edit Task";
   String _taskName = "";
   String _taskDesc = "";
   bool _isChecked = false;
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      _taskName = widget.updatedTask.taskName;
+      _taskDesc = widget.updatedTask.taskDesc;
+      _isChecked = widget.updatedTask.isDone;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +41,7 @@ class _UpdateTaskState extends State<UpdateTask> {
               size: 20,
             ),
             TextFormField(
+              initialValue: widget.updatedTask.taskDesc,
               decoration: textInputDecoration,
               onChanged: (val) => setState(() => _taskDesc = val),
             ),
@@ -40,6 +49,7 @@ class _UpdateTaskState extends State<UpdateTask> {
               size: 20,
             ),
             TextFormField(
+              initialValue: widget.updatedTask.taskName,
               decoration: textInputDecoration,
               onChanged: (val) => setState(() => _taskName = val),
             ),
@@ -50,7 +60,7 @@ class _UpdateTaskState extends State<UpdateTask> {
                 value: _isChecked,
                 onChanged: (val) {
                   setState(() {
-                    _isChecked = !_isChecked;
+                    _isChecked = val!;
                   });
                 }),
             ElevatedButton(
@@ -60,7 +70,7 @@ class _UpdateTaskState extends State<UpdateTask> {
                           taskName: _taskName,
                           taskDesc: _taskDesc,
                           isDone: _isChecked,
-                          id: widget.id));
+                          id: widget.updatedTask.id));
                   Navigator.of(context).pop();
                 }),
                 child: const Text("Update")),

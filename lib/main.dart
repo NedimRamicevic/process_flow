@@ -4,7 +4,7 @@ import 'package:process_flow/provider/bottom_navbar_provider.dart';
 import 'package:process_flow/provider/firestore_database_service.dart';
 import 'package:process_flow/screens/tasks/home.dart';
 import 'package:provider/provider.dart';
-import './theme/light_theme.dart';
+import 'shared/theme/light_theme.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
