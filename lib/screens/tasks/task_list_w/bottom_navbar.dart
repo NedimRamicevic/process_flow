@@ -19,16 +19,19 @@ class _BottomNavBarState extends State<BottomNavBar> {
       selectedItemColor: Colors.white,
       currentIndex: selectedIndex,
       onTap: (index) {
+        if (selectedIndex == index) {
+          selectTaskList(2, context);
+        } else {
+          selectTaskList(index, context);
+        }
         setState(() {
           selectedIndex = index;
         });
-        selectTaskList(index, context);
       },
       items: const [
         BottomNavigationBarItem(
             icon: Icon(Icons.fact_check_outlined), label: "Todos"),
         BottomNavigationBarItem(icon: Icon(Icons.done), label: "Completed"),
-        BottomNavigationBarItem(icon: Icon(Icons.list), label: "All"),
       ],
     );
   }
@@ -48,3 +51,5 @@ class _BottomNavBarState extends State<BottomNavBar> {
     }
   }
 }
+
+class BottomNavigationBartype {}

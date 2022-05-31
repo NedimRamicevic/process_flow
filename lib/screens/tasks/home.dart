@@ -20,7 +20,7 @@ class Home extends StatelessWidget {
         appBar: AppBar(
           title: Text(title),
         ),
-        body: sortTask(Provider.of<BottomNavBarNotfier>(context)),
+        body: sortTask(value),
         bottomNavigationBar: const BottomNavBar(),
         floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.add),
@@ -32,7 +32,7 @@ class Home extends StatelessWidget {
                 });
           },
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       ),
     );
   }
