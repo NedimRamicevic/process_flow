@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:process_flow/models/task.dart';
+import 'package:process_flow/core/models/task.dart';
+
 import 'package:process_flow/provider/firestore_database_service.dart';
 import 'package:process_flow/screens/tasks/task_list_w/bottom_navbar.dart';
 import 'package:provider/provider.dart';

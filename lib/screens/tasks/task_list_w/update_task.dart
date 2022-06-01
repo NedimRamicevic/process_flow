@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:process_flow/provider/firestore_database_service.dart';
 import 'package:provider/provider.dart';
 
-import '../../../models/task.dart';
+import 'package:process_flow/core/models/task.dart';
+
 import '../../../shared/constants.dart';
 
 class UpdateTask extends StatefulWidget {
