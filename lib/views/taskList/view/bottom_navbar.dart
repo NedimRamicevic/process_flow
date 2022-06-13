@@ -11,6 +11,7 @@ class BottomNavBar extends StatefulWidget {
 
 class _BottomNavBarState extends State<BottomNavBar> {
   int selectedIndex = 0;
+  bool isAll = true;
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
@@ -20,7 +21,14 @@ class _BottomNavBarState extends State<BottomNavBar> {
       currentIndex: selectedIndex,
       onTap: (index) {
         if (selectedIndex == index) {
-          selectTaskList(2, context);
+          if (isAll == true) {
+            selectTaskList(index, context);
+          } else {
+            selectTaskList(2, context);
+          }
+          setState(() {
+            isAll = !isAll;
+          });
         } else {
           selectTaskList(index, context);
         }
