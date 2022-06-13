@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:process_flow/core/models/task.dart';
+import 'package:process_flow/views/tasks/model/task.dart';
 
 class FirestoreDatabaseService {
   final CollectionReference taskCollection =
