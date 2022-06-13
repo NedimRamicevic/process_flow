@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:process_flow/provider/firestore_database_service.dart';
+import 'package:process_flow/views/taskList/service/firestore_database_service.dart';
 import 'package:provider/provider.dart';
-
-import 'package:process_flow/views/taskList/model/taskModel.dart';
-
 import '../../../shared/constants.dart';
+import '../model/taskModel.dart';
 
 class UpdateTask extends StatefulWidget {
   const UpdateTask({Key? key, required this.updatedTask}) : super(key: key);

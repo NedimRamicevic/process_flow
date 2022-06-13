@@ -1,8 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:process_flow/provider/bottom_navbar_provider.dart';
-import 'package:process_flow/provider/firestore_database_service.dart';
-import 'package:process_flow/screens/tasks/home.dart';
+import 'package:process_flow/views/taskList/service/firestore_database_service.dart';
+import '../views/taskList/home.dart';
 import 'package:provider/provider.dart';
 import 'shared/theme/light_theme.dart';
 

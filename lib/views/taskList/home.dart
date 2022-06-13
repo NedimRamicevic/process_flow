@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:process_flow/views/taskList/model/taskModel.dart';
 
-import 'package:process_flow/provider/firestore_database_service.dart';
+import 'package:process_flow/views/taskList/service/firestore_database_service.dart';
 import './view/bottom_navbar.dart';
 import 'package:provider/provider.dart';
 
