@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:process_flow/views/workers/view/worker_list.dart';
-import 'package:process_flow/views/workers/viewModel/worker_view_model.dart';
+import '../view/worker_list.dart';
+import '../viewModel/worker_view_model.dart';
 import 'package:provider/provider.dart';
 
 class WorkersView extends StatelessWidget {

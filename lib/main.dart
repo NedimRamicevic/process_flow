@@ -1,8 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:process_flow/provider/bottom_navbar_provider.dart';
-import 'package:process_flow/views/taskList/service/firestore_database_service.dart';
-import 'package:process_flow/views/workers/view/workers_view.dart';
+import './features/taskList/task/service/firestore_database_service.dart';
+import './features/taskList/workers/view/workers_view.dart';
 import 'package:provider/provider.dart';
 import 'shared/theme/light_theme.dart';
 

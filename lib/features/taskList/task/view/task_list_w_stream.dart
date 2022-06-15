@@ -2,7 +2,7 @@ library task_list_w_stream;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:process_flow/views/taskList/service/firestore_database_service.dart';
+import '../service/firestore_database_service.dart';
 import '../model/taskModel.dart';
 import './task.dart';
 import './update_task.dart';

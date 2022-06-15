@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:process_flow/views/workers/model/worker.dart';
+import '../model/worker.dart';
 
 class WorkerService {
   final Dio _dio = Dio();
