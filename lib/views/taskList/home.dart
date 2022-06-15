@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:process_flow/views/taskList/model/taskModel.dart';
-
 import 'package:process_flow/views/taskList/service/firestore_database_service.dart';
 import './view/bottom_navbar.dart';
 import 'package:provider/provider.dart';
-
 import '../../provider/bottom_navbar_provider.dart';
 import 'view/add_task.dart';
 import 'view/task_list_w_stream.dart';
@@ -12,7 +10,7 @@ import 'view/task_list_w_stream.dart';
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
 
-  final title = "App Bar";
+  final title = "Task List";
   @override
   Widget build(BuildContext context) {
     return Consumer<BottomNavBarNotfier>(
