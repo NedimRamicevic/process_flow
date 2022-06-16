@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../../../provider/workerProvider.dart';
 import '../../../../shared/constants.dart';
 import '../../../../shared/loading.dart';
 import '../service/registerService.dart';
@@ -6,8 +8,10 @@ import '../service/registerService.dart';
 class Register extends StatefulWidget {
   const Register({
     Key? key,
+    required this.setifSignIn,
   }) : super(key: key);
 
+  final Function setifSignIn;
   @override
   _RegisterState createState() => _RegisterState();
 }
@@ -107,6 +111,8 @@ class _RegisterState extends State<Register> {
         });
       } else {
         setState(() {
+          Provider.of<UserProvider>(context, listen: false).getWorker(result);
+
           loading = false;
         });
       }
@@ -152,7 +158,7 @@ class _RegisterState extends State<Register> {
                 primary: Colors.redAccent,
                 padding: const EdgeInsets.symmetric(horizontal: 20)),
             onPressed: () {
-              // widget.setifSignIn();
+              widget.setifSignIn();
             },
             child: const Text("Sign In"))
       ],

@@ -1,7 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:process_flow/features/authentication/register/view/registerView.dart';
+import 'package:process_flow/features/wrapper.dart';
 import 'package:process_flow/provider/bottom_navbar_provider.dart';
+import 'package:process_flow/provider/workerProvider.dart';
 import './features/taskList/task/service/firestore_database_service.dart';
 import 'package:provider/provider.dart';
 import 'shared/theme/light_theme.dart';
@@ -23,8 +24,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         theme: LighTheme().theme,
         title: 'Flutter Demo',
-        home: ChangeNotifierProvider(
-            create: (context) => BottomNavBarNotfier(),
-            child: const Register()));
+        home: MultiProvider(providers: [
+          ChangeNotifierProvider(create: (context) => BottomNavBarNotfier()),
+          ChangeNotifierProvider(create: ((context) => UserProvider()))
+        ], child: const Wrapper()));
   }
 }
