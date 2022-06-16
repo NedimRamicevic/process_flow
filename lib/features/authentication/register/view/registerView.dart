@@ -4,14 +4,16 @@ import '../../../../shared/loading.dart';
 import '../service/registerService.dart';
 
 class Register extends StatefulWidget {
-  const Register({Key? key, required this.setifSignIn}) : super(key: key);
-  final Function setifSignIn;
+  const Register({
+    Key? key,
+  }) : super(key: key);
+
   @override
   _RegisterState createState() => _RegisterState();
 }
 
 class _RegisterState extends State<Register> {
-  final AuthService _auth = AuthService();
+  final RegisterAuthService _auth = RegisterAuthService();
   final GlobalKey<FormState> _registerKey = GlobalKey<FormState>();
   String name = "", lastname = "", email = "", password = "", error = "";
   bool loading = false;
@@ -96,12 +98,16 @@ class _RegisterState extends State<Register> {
       setState(() {
         loading = true;
       });
-      dynamic result =
-          await _auth.createUserWithEmailAndPassword(email, password);
+      dynamic result = await _auth.createUserWithEmailAndPassword(
+          email, password, name, lastname);
       if (result == null) {
         setState(() {
           loading = false;
           error = "enter a valid email";
+        });
+      } else {
+        setState(() {
+          loading = false;
         });
       }
     }
@@ -146,7 +152,7 @@ class _RegisterState extends State<Register> {
                 primary: Colors.redAccent,
                 padding: const EdgeInsets.symmetric(horizontal: 20)),
             onPressed: () {
-              widget.setifSignIn();
+              // widget.setifSignIn();
             },
             child: const Text("Sign In"))
       ],
