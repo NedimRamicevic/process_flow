@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:process_flow/provider/workerProvider.dart';
 import 'package:provider/provider.dart';
-
 import '../../../../shared/constants.dart';
 import '../../../../shared/loading.dart';
 import '../service/authService.dart';
@@ -28,24 +27,7 @@ class _SignInState extends State<SignIn> {
         ? const Loading()
         : Scaffold(
             backgroundColor: Colors.amber,
-            appBar: AppBar(
-              actions: [
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        primary: Colors.purple,
-                        padding: const EdgeInsets.symmetric(horizontal: 20)),
-                    onPressed: () {
-                      widget.setifSignIn();
-                    },
-                    child: const Text(
-                      "Register",
-                      style: TextStyle(color: Colors.white),
-                    )),
-              ],
-              backgroundColor: Colors.amberAccent,
-              elevation: 0,
-              title: const Text("Sign In"),
-            ),
+            appBar: SignInAppBar(),
             body: Container(
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 50),
               child: Form(
@@ -97,6 +79,27 @@ class _SignInState extends State<SignIn> {
           );
   }
 
+  AppBar SignInAppBar() {
+    return AppBar(
+      actions: [
+        ElevatedButton(
+            style: ElevatedButton.styleFrom(
+                primary: Colors.purple,
+                padding: const EdgeInsets.symmetric(horizontal: 20)),
+            onPressed: () {
+              widget.setifSignIn();
+            },
+            child: const Text(
+              "Register",
+              style: TextStyle(color: Colors.white),
+            )),
+      ],
+      backgroundColor: Colors.amberAccent,
+      elevation: 0,
+      title: const Text("Sign In"),
+    );
+  }
+
   void onEmailChanged(val) {
     setState(() {
       email = val;
@@ -121,7 +124,10 @@ class _SignInState extends State<SignIn> {
           error = "wrong email or password";
         });
       } else {
-        Provider.of<WorkerProvider>(context).getWorker(result);
+        setState(() {
+          loading = false;
+        });
+        Provider.of<UserProvider>(context).getWorker(result);
       }
     }
   }
